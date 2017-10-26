@@ -1,8 +1,8 @@
 # Semantic Segmentation
-### Introduction
+### Introduction:
 In this project, a Fully Convolutional Network (FCN) is used to label the pixels of a road in images.
 
-### Fully Convolutional Network (FCN)
+### Fully Convolutional Network (FCN):
 An FCN was used in this project because it retains the spatial information during training. This can be really helpful when trying to identify where an object is in an image. The architecture used in this project is divided into three main parts as shown in the architecture below:
 
 * Encoder: Pre-trained VGG16 neural network
@@ -14,7 +14,7 @@ An FCN was used in this project because it retains the spatial information durin
 ### Why do we need 1x1 convolution?
 The main purpose of the 1x1 convolutions that we are adding on top of the VGG is merely to reduce the number of filters from 4096 to whatever the number of classes for our model is and we did that for each layers.
 
-### Different Layes
+### Different Layers:
 Below are the different and their shape.
 
 * resample vgg_layer7_out by 1x1 Convolution: To go from ?x5x18x4096 to ?x5x18x2
@@ -26,7 +26,7 @@ Below are the different and their shape.
 * combined_layer2 = tf.add(vgg_layer3, fcn_layer2)
 * upsample combined_layer2 by factor of 8 in order to go from ?x20x72x2 to ?x160x576x2
 
-### Hyper-parameters
+### Hyper-parameters:
 
 Below are the different hyper parameter experimented tuned to get optimum result.
 
@@ -38,8 +38,8 @@ Below are the different hyper parameter experimented tuned to get optimum result
 | Learning Rate | .0001 |
 | Normalization Standard Deviation | .01|
 
-### Results
-Below are the images before anf after inferencing.
+### Results:
+Below are the images before and after inferencing.
 
 | images before| after inferencing |
 | --- | --- |

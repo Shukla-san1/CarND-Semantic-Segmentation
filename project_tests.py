@@ -8,6 +8,7 @@ import numpy as np
 import tensorflow as tf
 
 
+
 def test_safe(func):
     """
     Isolate tests

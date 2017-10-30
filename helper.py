@@ -76,6 +76,8 @@ def gen_batch_function(data_folder, image_shape):
             re.sub(r'_(lane|road)_', '_', os.path.basename(path)): path
             for path in glob(os.path.join(data_folder, 'gt_image_2', '*_road_*.png'))}
         background_color = np.array([255, 0, 0])
+        #print(image_paths[0])
+        #print(label_paths[0])
 
         random.shuffle(image_paths)
         for batch_i in range(0, len(image_paths), batch_size):
@@ -123,34 +125,7 @@ def gen_test_output(sess, logits, keep_prob, image_pl, data_folder, image_shape)
         street_im.paste(mask, box=None, mask=mask)
 
         yield os.path.basename(image_file), np.array(street_im)
-def gen_video_output(sess, logits, keep_prob,image_pl,image, image_shape):
-    """
-    Generate test output using the test images
-    :param sess: TF session
-    :param logits: TF Tensor for the logits
-    :param keep_prob: TF Placeholder for the dropout keep robability
-    :param image_pl: TF Placeholder for the image placeholder
-    :param data_folder: Path to the folder that contains the datasets
-    :param image_shape: Tuple - Shape of image
-    :return: Output for for each test image
-    """
-    image = scipy.misc.imresize(np.array(image), image_shape)
-    im_softmax = sess.run(
-       [tf.nn.softmax(logits)],
-       {keep_prob: 1.0, image_pl: [image]})
-    im_softmax = im_softmax[0][:, 1].reshape(image_shape[0], image_shape[1])
-    segmentation = (im_softmax > 0.5).reshape(image_shape[0], image_shape[1], 1)
-    mask = np.dot(segmentation, np.array([[0, 255, 0, 127]]))
-    mask = scipy.misc.toimage(mask, mode="RGBA")
-    street_im = scipy.misc.toimage(image)
-    street_im.paste(mask, box=None, mask=mask)
 
-    return np.array(street_im)
-    #return street_im.paste(mask, box=None, mask=mask)
-    
-
-	
-	 
 
 def save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_prob, input_image):
     # Make folder for current run

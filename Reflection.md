@@ -33,7 +33,7 @@ Below are the different hyper parameter experimented tuned to get optimum result
 | Parameter | Value |
 | --- | --- |
 | Keep Probability | .65 |
-| Batch Size | 16 |
+| Batch Size | 32 |
 | Epochs | 50|
 | Learning Rate | .0001 |
 | Normalization Standard Deviation | .01|
@@ -43,8 +43,8 @@ Below are the images before and after inferencing.
 
 | images before| after inferencing |
 | --- | --- |
-|![FCN Architecture](Reflection-images/um_000062.png) | ![FCN Architecture](Reflection-images/um_000062.-after.png)|
-| ![FCN Architecture](Reflection-images/um_000063.png) | ![FCN Architecture](Reflection-images/um_000063-after.png) |
+|![FCN Architecture](Reflection-images/um_000062-before.png) | ![FCN Architecture](Reflection-images/um_000062.-after.png)|
+| ![FCN Architecture](Reflection-images/um_000063-before.png) | ![FCN Architecture](Reflection-images/um_000063-after.png) |
 
 ### Loss Vs epcohs graph
 Below is how loss vs epochs graph looks like.
